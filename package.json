@@ -1,0 +1,17 @@
+{
+  "name": "zenn-contents",
+  "version": "1.0.0",
+  "description": "scizorman's Zenn contents",
+  "author": "Tetsutaro Ueda <tueda1207@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "init": "zenn init",
+    "preview": "zenn preview",
+    "new:article": "zenn new:article",
+    "new:book": "zenn new:book"
+  },
+  "dependencies": {
+    "zenn-cli": "^0.1.41"
+  }
+}
