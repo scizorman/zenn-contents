@@ -12,6 +12,6 @@
     "new:book": "zenn new:book"
   },
   "dependencies": {
-    "zenn-cli": "^0.1.41"
+    "zenn-cli": "0.1.41"
   }
 }
