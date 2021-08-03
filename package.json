@@ -4,7 +4,6 @@
   "description": "scizorman's Zenn contents",
   "author": "Tetsutaro Ueda <tueda1207@gmail.com>",
   "license": "UNLICENSED",
-  "private": true,
   "scripts": {
     "init": "zenn init",
     "preview": "zenn preview",
@@ -13,5 +12,6 @@
   },
   "devDependencies": {
     "zenn-cli": "0.1.93"
-  }
+  },
+  "private": true
 }
