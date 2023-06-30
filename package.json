@@ -5,12 +5,12 @@
   "author": "Tetsutaro Ueda <tueda1207@gmail.com>",
   "license": "UNLICENSED",
   "scripts": {
-    "init": "zenn init",
-    "preview": "zenn preview",
-    "new:article": "zenn new:article",
-    "new:book": "zenn new:book"
+    "lint": "prettier . --check --loglevel debug",
+    "fmt": "prettier . --write",
+    "zenn": "zenn"
   },
   "devDependencies": {
+    "prettier": "2.8.8",
     "zenn-cli": "0.1.144"
   },
   "private": true

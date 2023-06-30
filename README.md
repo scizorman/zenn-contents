@@ -7,19 +7,19 @@ The repository that manages my [Zenn](https://zenn.dev) contents.
 ### Create a new article
 
 ```console
-$ npm run new:article
+$ make articles/<slug>.md
 ```
 
 ### Create a new book
 
 ```console
-$ npm run new:book
+$ make books/<slug>
 ```
 
 ### Preview
 
 ```console
-$ npm run preview
+$ make preview
 ```
 
 ## Markdown guide
