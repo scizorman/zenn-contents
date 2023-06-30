@@ -1,0 +1,19 @@
+name: Verification
+
+on:
+  pull_request:
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Lint
+        run: make lint

@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 
-zenn := npm run zenn --
+markdownlint := npm run markdownlint --
+zenn         := npm run zenn --
 
 all:
 	@more $(MAKEFILE_LIST)
@@ -8,8 +9,11 @@ all:
 clean:
 	-rm -rf node_modules
 
-lint fmt: node_modules
-	npm run $@
+lint: node_modules
+	$(markdownlint) '**/*.md'
+
+fix: node_modules
+	$(markdownlint) '**/*.md' --fix
 
 articles/%.md: node_modules
 	$(zenn) new:article --slug $*
@@ -23,4 +27,4 @@ preview: node_modules
 node_modules: package.json package-lock.json
 	npm ci
 
-.PHONY: all clean lint fmt preview
+.PHONY: all clean lint fix preview

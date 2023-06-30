@@ -5,12 +5,11 @@
   "author": "Tetsutaro Ueda <tueda1207@gmail.com>",
   "license": "UNLICENSED",
   "scripts": {
-    "lint": "prettier . --check",
-    "fmt": "prettier . --write",
+    "markdownlint": "markdownlint-cli2",
     "zenn": "zenn"
   },
   "devDependencies": {
-    "prettier": "2.8.8",
+    "markdownlint-cli2": "0.8.1",
     "zenn-cli": "0.1.144"
   },
   "private": true
