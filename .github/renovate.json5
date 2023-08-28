@@ -6,16 +6,14 @@
   timezone: "Asia/Tokyo",
   packageRules: [
     {
-      matchManagers: ["node"],
       matchUpdateTypes: ["major"],
-      groupName: "Node.js major dependencies",
-      groupSlug: "nodejs-major-patch",
+      groupName: "Major dependencies",
+      groupSlug: "major-patch",
     },
     {
-      matchManagers: ["node"],
       matchUpdateTypes: ["minor", "patch"],
-      groupName: "Node.js non-major dependencies",
-      groupSlug: "nodejs-minor-patch",
+      groupName: "Non-major dependencies",
+      groupSlug: "minor-patch",
       automerge: true,
     },
   ],
