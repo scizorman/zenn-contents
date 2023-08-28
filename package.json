@@ -4,10 +4,6 @@
   "description": "scizorman's Zenn contents",
   "author": "Tetsutaro Ueda <tueda1207@gmail.com>",
   "license": "UNLICENSED",
-  "scripts": {
-    "markdownlint": "markdownlint-cli2",
-    "zenn": "zenn"
-  },
   "devDependencies": {
     "markdownlint-cli2": "0.9.2",
     "zenn-cli": "0.1.144"
