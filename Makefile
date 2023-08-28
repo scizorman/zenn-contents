@@ -1,9 +1,12 @@
+.DELETE_ON_ERROR:
+
 SHELL := /bin/bash
 
 NPM := npm
 
-markdownlint := $(NPM) run markdownlint --
-zenn         := $(NPM) run zenn --
+node_modules := node_modules
+markdownlint := $(node_modules)/.bin/markdownlint-cli2
+zenn         := $(node_modules)/.bin/zenn
 
 .PHONY: all
 all:
@@ -11,25 +14,26 @@ all:
 
 .PHONY: clean
 clean:
-	-rm -rf node_modules
+	-rm -rf $(node_modules)
+
+$(markdownlint) $(zenn): $(node_modules)
+$(node_modules): package.json package-lock.json
+	$(NPM) ci
 
 .PHONY: lint
-lint: node_modules
-	$(markdownlint) '**/*.md'
+lint: $(markdownlint)
+	$< '**/*.md'
 
 .PHONY: fix
-fix: node_modules
-	$(markdownlint) '**/*.md' --fix
+fix: $(markdownlint)
+	$< '**/*.md' --fix
 
-articles/%.md: node_modules
-	$(zenn) new:article --slug $*
+articles/%.md: $(zenn)
+	$< new:article --slug $*
 
-books/%: node_modules
-	$(zenn) new:book --slug $*
+books/%: $(zenn)
+	$< new:book --slug $*
 
 .PHONY: preview
-preview: node_modules
-	$(zenn) preview
-
-node_modules: package.json package-lock.json
-	$(NPM) ci
+preview: $(zenn)
+	$< preview
