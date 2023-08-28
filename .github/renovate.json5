@@ -4,4 +4,19 @@
   labels: ["renovate"],
   schedule: ["after 9am and before 6pm on monday"],
   timezone: "Asia/Tokyo",
+  packageRules: [
+    {
+      matchManagers: ["node"],
+      matchUpdateTypes: ["major"],
+      groupName: "Node.js major dependencies",
+      groupSlug: "nodejs-major-patch",
+    },
+    {
+      matchManagers: ["node"],
+      matchUpdateTypes: ["minor", "patch"],
+      groupName: "Node.js non-major dependencies",
+      groupSlug: "nodejs-minor-patch",
+      automerge: true,
+    },
+  ],
 }
