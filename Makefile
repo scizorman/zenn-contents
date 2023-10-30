@@ -1,8 +1,9 @@
 .DELETE_ON_ERROR:
 
-SHELL := /bin/bash
+SHELL       := /bin/bash
+.SHELLFLAGS := -eu -o pipefail -c
 
-NPM := npm
+BUN := bun
 
 node_modules := node_modules
 markdownlint := $(node_modules)/.bin/markdownlint-cli2
@@ -17,8 +18,8 @@ clean:
 	-rm -rf $(node_modules)
 
 $(markdownlint) $(zenn): $(node_modules)
-$(node_modules): package.json package-lock.json
-	$(NPM) ci
+$(node_modules): package.json bun.lockb
+	$(BUN) install --frozen-lockfile
 
 .PHONY: lint
 lint: $(markdownlint)
