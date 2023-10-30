@@ -1,7 +1,6 @@
 .DELETE_ON_ERROR:
 
-SHELL       := /bin/bash
-.SHELLFLAGS := -eu -o pipefail -c
+SHELL := /bin/bash
 
 BUN := bun
 
