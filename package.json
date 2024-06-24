@@ -8,9 +8,5 @@
     "markdownlint-cli2": "0.13.0",
     "zenn-cli": "0.1.154"
   },
-  "engines": {
-    "bun": "1.1.6"
-  },
   "private": true
 }
-
