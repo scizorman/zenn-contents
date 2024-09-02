@@ -13,6 +13,6 @@ jobs:
       - name: 'Checkout'
         uses: 'actions/checkout@v4'
       - name: 'Validate the Renovate configuration'
-        uses: 'suzuki-shunsuke/github-actions-renovate-config-validator@v1'
+        uses: 'suzuki-shunsuke/github-action-renovate-config-validator@v1.1.0'
         with:
           strict: true
