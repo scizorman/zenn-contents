@@ -12,10 +12,7 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: 'actions/checkout@v4'
-      - name: 'Set up Node.js'
-        uses: 'actions/setup-node@v4'
-        with:
-          node-version: '20.17.0'
       - name: 'Validate the Renovate configuration'
-        run: |
-          npx --yes --package renovate -- renovate-config-validator --strict
+        uses: 'suzuki-shunsuke/github-actions-renovate-config-validator@v1'
+        with:
+          strict: true
