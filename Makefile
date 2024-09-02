@@ -1,37 +1,30 @@
-.DELETE_ON_ERROR:
-
-SHELL := /bin/bash
-
-BUN := bun
-
-node_modules := node_modules
-markdownlint := $(node_modules)/.bin/markdownlint-cli2
-zenn         := $(node_modules)/.bin/zenn
-
 .PHONY: all
 all:
 	@more $(MAKEFILE_LIST)
 
 .PHONY: clean
 clean:
-	-rm -rf $(node_modules)
+	-rm -rf node_modules
 
-$(markdownlint) $(zenn): $(node_modules)
-$(node_modules): package.json bun.lockb
-	$(BUN) install --frozen-lockfile
+markdownlint := node_modules/.bin/markdownlint-cli2
+zenn         := node_modules/.bin/zenn
+$(markdownlint) $(zenn): node_modules
+node_modules: package.json bun.lockb .bun-version
+	bun install --frozen-lockfile
+	touch $@
 
 .PHONY: lint
 lint: $(markdownlint)
 	$< '**/*.md'
 
-.PHONY: fix
-fix: $(markdownlint)
+.PHONY: fmt
+fmt: $(markdownlint)
 	$< '**/*.md' --fix
 
-articles/%.md: $(zenn)
+articles/%.md: | $(zenn)
 	$< new:article --slug $*
 
-books/%: $(zenn)
+books/%: | $(zenn)
 	$< new:book --slug $*
 
 .PHONY: preview
