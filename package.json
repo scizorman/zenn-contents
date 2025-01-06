@@ -5,7 +5,7 @@
   "author": "Tetsutaro Ueda <tueda1207@gmail.com>",
   "license": "UNLICENSED",
   "devDependencies": {
-    "markdownlint-cli2": "0.17.0",
+    "markdownlint-cli2": "0.17.1",
     "zenn-cli": "0.1.158"
   },
   "private": true
