@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "markdownlint-cli2": "0.17.2",
-    "zenn-cli": "0.1.158"
+    "zenn-cli": "0.1.159"
   },
   "private": true
 }
