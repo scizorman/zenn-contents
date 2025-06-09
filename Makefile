@@ -9,7 +9,7 @@ clean:
 markdownlint := node_modules/.bin/markdownlint-cli2
 zenn         := node_modules/.bin/zenn
 $(markdownlint) $(zenn): node_modules
-node_modules: package.json bun.lockb .bun-version
+node_modules: package.json bun.lock .bun-version
 	bun install --frozen-lockfile
 	touch $@
 
