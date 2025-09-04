@@ -1,15 +1,16 @@
-name: 'Verification'
+name: Verification
 
-on: 'pull_request'
+on:
+  pull_request:
 
 jobs:
   lint:
-    name: 'Lint'
-    runs-on: 'ubuntu-latest'
+    name: Lint
+    runs-on: ubuntu-24.04
     steps:
-      - uses: 'actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8' # v5
-        with:
-          persist-credentials: false
-      - uses: 'jdx/mise-action@5cb1df66ed5e1fb3c670ea0b62fd17a76979826a' # v2
-      - run: |
-          make lint
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+      - name: Set up mise
+        uses: jdx/mise-action@5cb1df66ed5e1fb3c670ea0b62fd17a76979826a # v2
+      - name: Lint
+        run: make lint
