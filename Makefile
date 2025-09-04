@@ -6,27 +6,22 @@ all:
 clean:
 	-rm -rf node_modules
 
-markdownlint := node_modules/.bin/markdownlint-cli2
-zenn         := node_modules/.bin/zenn
-$(markdownlint) $(zenn): node_modules
-node_modules: package.json bun.lock .bun-version
-	bun install --frozen-lockfile
-	touch $@
-
+markdownlint := mise exec npm:markdownlint-cli2 -- markdownlint-cli2
+zenn := mise exec npm:zenn-cli -- zenn
 .PHONY: lint
-lint: $(markdownlint)
-	$< '**/*.md'
+lint:
+	$(markdownlint) '**/*.md'
 
 .PHONY: fmt
-fmt: $(markdownlint)
-	$< '**/*.md' --fix
+fmt:
+	$(markdownlint) '**/*.md' --fix
 
-articles/%.md: | $(zenn)
-	$< new:article --slug $*
+articles/%.md:
+	$(zenn) new:article --slug $*
 
-books/%: | $(zenn)
-	$< new:book --slug $*
+books/%:
+	$(zenn) new:book --slug $*
 
 .PHONY: preview
-preview: $(zenn)
-	$< preview
+preview:
+	$(zenn) preview
