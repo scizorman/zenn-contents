@@ -11,6 +11,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6
       - name: Set up mise
-        uses: jdx/mise-action@156251fcc627ac4e26cb0f93dd47d1d4979abf24 # v3
+        uses: jdx/mise-action@146a28175021df8ca24f8ee1828cc2a60f980bd5 # v3
       - name: Lint
         run: make lint
