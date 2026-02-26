@@ -1,5 +1,5 @@
 config:
   default: true
 ignores:
-  - ".git"
-  - "node_modules"
+  - '.git'
+  - '.direnv'
