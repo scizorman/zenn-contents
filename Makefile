@@ -2,23 +2,20 @@
 all:
 	@more $(MAKEFILE_LIST)
 
-markdownlint := mise exec npm:markdownlint-cli2 -- markdownlint-cli2
-zenn := mise exec npm:zenn-cli -- zenn
-
 .PHONY: lint
 lint:
-	$(markdownlint) '**/*.md'
+	markdownlint-cli2 '**/*.md'
 
 .PHONY: fmt
 fmt:
-	$(markdownlint) '**/*.md' --fix
+	markdownlint-cli2 '**/*.md' --fix
 
 articles/%.md:
-	$(zenn) new:article --slug $*
+	zenn new:article --slug $*
 
 books/%:
-	$(zenn) new:book --slug $*
+	zenn new:book --slug $*
 
 .PHONY: preview
 preview:
-	$(zenn) preview
+	zenn preview
