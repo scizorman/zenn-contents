@@ -2,19 +2,5 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: ["config:best-practices"],
   labels: ["renovate"],
-  schedule: ["after 9am and before 6pm on monday"],
-  timezone: "Asia/Tokyo",
-  packageRules: [
-    {
-      matchUpdateTypes: ["major"],
-      groupName: "Major dependencies",
-      groupSlug: "major-patch",
-    },
-    {
-      matchUpdateTypes: ["minor", "patch"],
-      groupName: "Non-major dependencies",
-      groupSlug: "minor-patch",
-      automerge: true,
-    },
-  ],
+  automerge: true,
 }
