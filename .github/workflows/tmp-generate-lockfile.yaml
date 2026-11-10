@@ -1,0 +1,33 @@
+# Temporary: generates .github/workflows/actions.lock and prints it. Removed right after use.
+name: 'tmp: generate actions.lock'
+
+on:
+  push:
+    branches:
+      - 'claude/sweet-feynman-6t1yeb'
+
+permissions: {}
+
+jobs:
+  generate:
+    runs-on: 'ubuntu-24.04'
+    permissions:
+      contents: 'read'
+    timeout-minutes: 5
+    steps:
+      - uses: 'actions/checkout@v7.0.1'
+        with:
+          persist-credentials: false
+      - run: |
+          rm .github/workflows/tmp-generate-lockfile.yaml
+          gh extension install github/gh-actions-lock --pin v0.4.1
+          gh actions-lock
+          gh actions-lock --verify
+          echo "STATUS_BEGIN"
+          git status --porcelain
+          echo "STATUS_END"
+          echo "SHA256=$(sha256sum .github/workflows/actions.lock | cut -d' ' -f1)"
+          echo "LOCK_B64=$(base64 -w0 .github/workflows/actions.lock)"
+          echo "DIFF_B64=$(git diff -- . ':(exclude).github/workflows/tmp-generate-lockfile.yaml' | base64 -w0)"
+        env:
+          GH_TOKEN: '${{ github.token }}'
