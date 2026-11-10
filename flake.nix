@@ -19,7 +19,6 @@
             packages = with pkgs; [
               zenn-cli
               markdownlint-cli2
-              gh-actions-lock
             ];
           };
         }
