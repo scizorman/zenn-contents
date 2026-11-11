@@ -18,9 +18,8 @@ jobs:
       - uses: 'cachix/install-nix-action@v31.11.3'
       - run: |
           nix develop --command make lint
-
-  verify-lockfile:
-    runs-on: 'ubuntu-24.04'
+  verify-actions-lock:
+    runs-on: 'ubuntu-slim'
     permissions:
       contents: 'read'
     timeout-minutes: 5
