@@ -18,9 +18,8 @@ jobs:
       - uses: 'cachix/install-nix-action@v31.11.3'
       - run: |
           nix develop --command make lint
-
-  verify-lockfile:
-    runs-on: 'ubuntu-24.04'
+  verify-github-actions-lock:
+    runs-on: 'ubuntu-slim'
     permissions:
       contents: 'read'
     timeout-minutes: 5
@@ -30,6 +29,9 @@ jobs:
           persist-credentials: false
       - run: |
           gh extension install github/gh-actions-lock --pin v0.4.1
+        env:
+          GH_TOKEN: '${{ github.token }}'
+      - run: |
           gh actions-lock --verify
         env:
           GH_TOKEN: '${{ github.token }}'
