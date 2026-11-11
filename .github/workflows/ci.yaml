@@ -18,7 +18,7 @@ jobs:
       - uses: 'cachix/install-nix-action@v31.11.3'
       - run: |
           nix develop --command make lint
-  verify-actions-lock:
+  verify-github-actions-lock:
     runs-on: 'ubuntu-slim'
     permissions:
       contents: 'read'
